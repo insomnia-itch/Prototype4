@@ -26,7 +26,8 @@ public class SpawnManager : MonoBehaviour
         {
             wave++;
             SpawnEnemyWave(wave);
-            Instantiate(powerupPrefab, GenerateSpawnPosition(), powerupPrefab.transform.rotation);
+            GameObject enemy = Instantiate(powerupPrefab, GenerateSpawnPosition(), powerupPrefab.transform.rotation);
+            enemy.GetComponent<EnemyX>().speed *= wave;
         }
     }
 
