@@ -8,9 +8,6 @@ public class PlayerControllerX : MonoBehaviour
     private float speed = 500;
     private GameObject focalPoint;
 
-    public GameObject bulletPrefab;
-
-    public bool hasWeapon = false;
     public bool hasPowerup;
     public GameObject powerupIndicator;
     public int powerUpDuration = 5;
@@ -23,7 +20,7 @@ public class PlayerControllerX : MonoBehaviour
     void Start()
     {
         playerRb = GetComponent<Rigidbody>();
-        focalPoint = GameObject.Find("FocalPoint");
+        focalPoint = GameObject.Find("Focal Point");
     }
 
     void Update()
@@ -54,13 +51,12 @@ public class PlayerControllerX : MonoBehaviour
     // If Player collides with powerup, activate powerup
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Powerup") || other.CompareTag("Weapon Powerup"))
+        if (other.gameObject.CompareTag("Powerup"))
         {
             Destroy(other.gameObject);
             hasPowerup = true;
             powerupIndicator.SetActive(true);
             StartCoroutine(PowerupCooldown());
-            StartCoroutine(WeaponCountdownRoutine());
         }
     }
 
@@ -72,15 +68,6 @@ public class PlayerControllerX : MonoBehaviour
         powerupIndicator.SetActive(false);
     }
 
-    IEnumerator WeaponCountdownRoutine()
-    {
-        // find all enemies, then for each enemy, create a bullet heading towards the position of the enemy
-        while (true)
-        {
-            Instantiate(bulletPrefab, playerRb.transform.position, bulletPrefab.transform.rotation);
-            yield return new WaitForSeconds(7);
-        }
-    }
     // If Player collides with enemy
     private void OnCollisionEnter(Collision other)
     {

@@ -11,7 +11,6 @@ public class PlayerController : MonoBehaviour
 
     public GameObject powerupIndicator;
     public bool hasPowerUp = false;
-    public bool hasWeapon = false;
     private float powerUpStrength = 15.0f;
     // Start is called before the first frame update
     void Start()
@@ -26,13 +25,11 @@ public class PlayerController : MonoBehaviour
         float forwardInput = Input.GetAxis("Vertical");
         rb.AddForce(focalPoint.transform.forward * forwardInput * speed);
         powerupIndicator.transform.position = transform.position + new Vector3(0, -0.5f, 0);
-
-
     }
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Powerup") || other.CompareTag("Weapon Powerup"))
+        if (other.CompareTag("Powerup"))
         {
             hasPowerUp = true;
             powerupIndicator.SetActive(true);
@@ -45,14 +42,6 @@ public class PlayerController : MonoBehaviour
     {
         yield return new WaitForSeconds(7);
         hasPowerUp = false;
-        powerupIndicator.SetActive(false);
-    }
-
-    IEnumerator WeaponCountdownRoutine()
-    {
-        yield return new WaitForSeconds(7);
-        hasPowerUp = false;
-        hasWeapon = false;
         powerupIndicator.SetActive(false);
     }
 
