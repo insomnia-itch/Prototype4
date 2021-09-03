@@ -138,7 +138,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4428908044626120, guid: 923deea38dc6a8843b15db7638919c1e, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4428908044626120, guid: 923deea38dc6a8843b15db7638919c1e, type: 3}
       propertyPath: m_LocalPosition.y
@@ -363,8 +363,9 @@ MonoBehaviour:
   - {fileID: 5686865901757738555, guid: 06dcd621e5b933f459e6249aad399ae8, type: 3}
   enemyCount: 0
   wave: 1
-  powerupPrefab: {fileID: 6945830048287807313, guid: 9be6fce106c88a44dbf6941b2de2efb6,
-    type: 3}
+  powerupPrefabs:
+  - {fileID: 4446131693967519089, guid: c5497424856514b2ba61b78375567988, type: 3}
+  - {fileID: 4984522679753918621, guid: 87715630c18e7444d9c30dabc67985d7, type: 3}
 --- !u!4 &671917680
 Transform:
   m_ObjectHideFlags: 0
@@ -393,6 +394,7 @@ GameObject:
   - component: {fileID: 943140914}
   - component: {fileID: 943140913}
   - component: {fileID: 943140918}
+  - component: {fileID: 943140919}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -497,7 +499,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 943140912}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 43c2f0f084386914ba55570797d3f3eb, type: 3}
   m_Name: 
@@ -505,6 +507,26 @@ MonoBehaviour:
   speed: 5
   powerupIndicator: {fileID: 1019424423}
   hasPowerUp: 0
+--- !u!114 &943140919
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 943140912}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5036a60f22d8542ca830e4578804462b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hasPowerup: 0
+  powerupIndicator: {fileID: 1019424423}
+  powerUpDuration: 5
+  smokeParticle: {fileID: 4392870381175910774, guid: 6562db3a873684fa9b7da3aef8329d82,
+    type: 3}
+  currentPowerUp: 0
+  rocketPrefab: {fileID: 6655551231753171979, guid: 0f51bbe2c8bd01745bd03feba89f2fc3,
+    type: 3}
 --- !u!1 &1019424423 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1742899641471652, guid: 923deea38dc6a8843b15db7638919c1e,
